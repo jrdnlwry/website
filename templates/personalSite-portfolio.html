@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+<!-- Data Layer -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        // Example of setting initial values
+        window.dataLayer.push({
+        'event': 'pageview',
+        // Add any initial properties you want to track, such as:
+        'pagePath': '/home',
+        'pageTitle': 'Homepage'
+        });
+    </script>
+<script>
+    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+    dataLayer.push({
+      event: "view_item_list",
+      ecommerce: {
+        item_list_id: "related_products",
+        item_list_name: "Related products",
+        items: [
+         {
+          item_id: "SKU_12345",
+          item_name: "Stan and Friends Tee",
+          affiliation: "Google Merchandise Store",
+          coupon: "SUMMER_FUN",
+          discount: 2.22,
+          index: 0,
+          item_brand: "Google",
+          item_category: "Apparel",
+          item_category2: "Adult",
+          item_category3: "Shirts",
+          item_category4: "Crew",
+          item_category5: "Short sleeve",
+          item_list_id: "related_products",
+          item_list_name: "Related Products",
+          item_variant: "green",
+          location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+          price: 9.99,
+          quantity: 1
+        },
+        {
+          item_id: "SKU_12346",
+          item_name: "Google Grey Women's Tee",
+          affiliation: "Google Merchandise Store",
+          coupon: "SUMMER_FUN",
+          discount: 3.33,
+          index: 1,
+          item_brand: "Google",
+          item_category: "Apparel",
+          item_category2: "Adult",
+          item_category3: "Shirts",
+          item_category4: "Crew",
+          item_category5: "Short sleeve",
+          item_list_id: "related_products",
+          item_list_name: "Related Products",
+          item_variant: "gray",
+          location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+          price: 20.99,
+          promotion_id: "P_12345",
+          promotion_name: "Summer Sale",
+          quantity: 1
+        }]
+      }
+    });
+    </script>
+
+<!-- Segment deployment -->
+<script>
+    !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="wNTVClcABXp1UUb3H9nWVNvjHqj8XZPc";;analytics.SNIPPET_VERSION="5.2.0";
+    analytics.load("wNTVClcABXp1UUb3H9nWVNvjHqj8XZPc");
+    analytics.page();
+    }}();
+  </script>
+
+<!-- Segment JS Code -->
+<script>
+var lastDataLayerObject = dataLayer[dataLayer.length - 1]; // Get the most recent dataLayer object
+
+// Check if the event is 'view_item_list'
+if (lastDataLayerObject.event === "view_item_list") {
+  // Map the dataLayer object to Segment's analytics.track() format
+  analytics.track('Viewed Item List', {
+    list_id: lastDataLayerObject.ecommerce.item_list_id,
+    category: lastDataLayerObject.ecommerce.items[0].item_category, // Assuming all items belong to the same main category
+    items: lastDataLayerObject.ecommerce.items.map(function(item, index) {
+      return {
+        product_id: item.item_id,
+        sku: item.item_id, // Assuming SKU is the same as item_id
+        name: item.item_name,
+        price: item.price,
+        position: index + 1, // Adjusting index to start from 1
+        category: item.item_category,
+        variant: item.item_variant,
+        brand: item.item_brand,
+        quantity: item.quantity,
+        url: '', // URL is not provided in the dataLayer object; you might need to construct this if possible
+        image_url: '', // Image URL is not provided in the dataLayer object; you might need to add this if available
+      };
+    })
+  });
+}
+</script>
+</head>
+<script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+</script>
+  <body>
+    <title>Personal Portfolio</title>
+    <!-- Begin Navbar Section -->
+    <nav id="navbar" class="nav">
+        <ul class="nav-list">
+            <li>
+                <a href="https://medium.com/@jtlowry2"> Blog </a>
+            </li>
+            <li>
+                <a href="#portfolio-anchor">Portfolio</a>
+            </li>
+            <li>
+                <a href="#contact-anchor">Contact</a>
+            </li>
+            <li>
+                <a href="#">Resume</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Begin Welcome Section -->
+    <section id="welcome-section" class="welcome-section">
+        <p>Hey, I am</p>
+        <h1>Tate Lowry</h1>
+        <p>A data literate entrepreneur & techncial SEO consultant with a passion for tech.</p>
+    </section>
+    <!-- Begin Resume/Career Section -->
+    <section id="resume-section" class="resume-section">
+        <h2>Career highlights</h2>
+        <div class="career-highlights">
+            <ul id="resume-highlights">
+                <li><span class="check">✔️</span> Successfully grew a SEO focused client services business from 0$ - $50k in MRR and sold the company</li>
+                <li><span class="check">✔️</span> 7+ years experience building & executing SEO campaigns soup to nuts.</li>
+                <li><span class="check">✔️</span> Deep expertise in building, documenting and delegating internal processes. </li>
+                <li><span class="check">✔️</span> Highly Experienced at building internal processes, SOPs and training junior talent.  </li>
+            </ul>
+        </div>
+
+        <!-- Begin Horizontal Tab Navigation -->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'RANQ')">RANQ Digital</button>
+            <button class="tablinks" onclick="openCity(event, 'Beacon')">Beacon</button>
+            <button class="tablinks" onclick="openCity(event, 'NTVS')">The NTVS</button>
+          </div>
+
+          <div id="RANQ" class="tabcontent">
+            <div class="inner-content">
+                <h3>RANQ</h3>
+                <p>Managing Partner | Director of SEO</p>
+                <ul id="resume-highlights">
+                    <li>Developed, documented, delegated and streamlined technical SEO service offerings.</li>
+                    <li>Developed a sales personalization tool that reduced 3-5 manual hours of work per week and increased overall email volume by ~100 per week.</li>
+                    <li>Developed a transparent analytics and reporting infrastructure to improve client retention.</li>
+                </ul>
+            </div>
+          </div>
+
+          <div id="Beacon" class="tabcontent">
+            <div class="inner-content">
+                <h3>Beacon</h3>
+                <p>SEO Analyst</p>
+                <ul id="resume-highlights">
+                    <li>Served as SEO campaign lead for a variety of B2b clients.</li>
+                    <li>Achieved a 54% increase in leads generated for a B2b client.</li>
+                    <li>Leverage content gaps and keyword research to drive 47% increase in revenue.</li>
+                    <li>Analyzes Google Analytics data and investigates new growth opportunities.</li>
+                </ul>
+            </div>
+          </div>
+
+          <div id="NTVS" class="tabcontent">
+            <div class="inner-content">
+                <h3>The NTVS</h3>
+                <p>Fractional SEO Director</p>
+                <ul id="resume-highlights">
+                    <li>Initiated market research using Google Trends to increase traffic to the NTVS site from international markets.</li>
+                    <li>Successfully implemented Google Analytics, e-commerce tracking and event tracking.</li>
+                    <li>Solved site infrastructure issues and identified lucrative content opportunities.</li>
+                    <li>Increased overall organic traffic YoY by 255%.</li>
+                </ul>
+            </div>
+          </div>
+    </section>
+
+
+<section id="projects" class="project-section">
+    <h2 id="portfolio-anchor" class="project-intro">Featured projects</h2>
+    <div class="gallery">
+
+        <a class="project project-tile" href="/portfolio-1">
+            <div class="image image1">
+                <p>47% increase in organic leads for a B2b manufacturing client</p>
+            </div>
+        </a>
+
+        <a class="project project-tile" href="/portfolio-2">
+            <div class="image image2">
+                <p>Led a complex website consolidation across international domains</p>
+            </div>
+        </a>
+
+        <a class="project project-tile" href="/portfolio-3">
+            <div class="image image3">
+                <p>Helped an ecommerce brand recover from a 42% traffic drop</p>
+            </div>
+        </a>
+
+        <a class="project project-tile" href="/portfolio-4">
+            <div class="image image4">
+                <p>Grew user registrations by 64% in under 6 months for a Saas platform</p>
+            </div>
+        </a>
+
+        <a class="project project-tile" href="/portfolio-5">
+            <div class="image image5">
+                <p>Provided visbility into how users were engaging with a saas platform</p>
+            </div>
+        </a>
+
+        <a class="project project-tile" href="/portfolio-6">
+            <div class="image image6">
+                <p>Developed a sales personalization tool</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="footer-header">
+        <h2>Let's work together</h2>
+        <p>Drop me a line let's chat!</p>
+    </div>
+    <div class="footer-contact">
+        <a class="contact-btn" href="https://www.linkedin.com/in/lowryjordan/">
+            <button style="font-size:18px"><i class="fa fa-linkedin-square"> Connect with me</i></button>
+        </a>
+        <a id="contact-anchor" class="contact-btn" href = "mailto: tatelwry@gmail.com">
+            <button style="font-size:18px"><i class="fa fa-envelope"> Email me</i></button>
+        </a>
+        <a class="contact-btn" href="tel:555-666-7777">
+            <button style="font-size:18px"><i class="fa fa-phone"> Call me</i></button>
+        </a>
+    </div>
+</section>
+
+<footer id="footer-section" class="footer-section">
+    <p>Developed with 💪 by Jordan Lowry</p>
+    <p>Powered by ˗ˏˋ☕ˎˊ˗</p>
+</footer>
+  </body>
+</html>

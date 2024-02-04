@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<style>
+</style>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/portfolio-style.css">
+<!-- Data Layer -->
+<script>
+        window.dataLayer = window.dataLayer || [];
+        // Example of setting initial values
+        window.dataLayer.push({
+        'event': 'pageview',
+        // Add any initial properties you want to track, such as:
+        'pagePath': '/portfolio',
+        'pageTitle': 'Portfolio Section'
+        });
+</script>
+<script>
+dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+dataLayer.push({
+  event: "view_item",
+  ecommerce: {
+    currency: "USD",
+    value: 7.77,
+    items: [
+    {
+      item_id: "SKU_12345",
+      item_name: "Stan and Friends Tee",
+      affiliation: "Google Merchandise Store",
+      coupon: "SUMMER_FUN",
+      discount: 2.22,
+      index: 0,
+      item_brand: "Google",
+      item_category: "Apparel",
+      item_category2: "Adult",
+      item_category3: "Shirts",
+      item_category4: "Crew",
+      item_category5: "Short sleeve",
+      item_list_id: "related_products",
+      item_list_name: "Related Products",
+      item_variant: "green",
+      location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+      price: 9.99,
+      quantity: 1
+    }
+    ]
+  }
+});
+</script>
+<!-- Segment deployment -->
+<script>
+    !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="wNTVClcABXp1UUb3H9nWVNvjHqj8XZPc";;analytics.SNIPPET_VERSION="5.2.0";
+    analytics.load("wNTVClcABXp1UUb3H9nWVNvjHqj8XZPc");
+    analytics.page();
+    }}();
+  </script>
+<!-- Segment JS Code-->
+<script>
+// Function to find the ecommerce object within the dataLayer
+function findEcommerceObject(dataLayer) {
+  for (var i = 0; i < dataLayer.length; i++) {
+    if (dataLayer[i].ecommerce && dataLayer[i].ecommerce.items && dataLayer[i].ecommerce.items.length > 0) {
+      return dataLayer[i];
+    }
+  }
+  return null; // Return null if no ecommerce object is found
+}
+
+// Function to find the page title object within the dataLayer
+function findPageTitleObject(dataLayer) {
+  for (var i = 0; i < dataLayer.length; i++) {
+    if (dataLayer[i].pageTitle) {
+      return dataLayer[i].pageTitle;
+    }
+  }
+  return ""; // Return empty string if no pageTitle is found
+}
+
+// Execute only if dataLayer is defined
+if (typeof dataLayer !== 'undefined' && dataLayer.length > 0) {
+  var ecommerceObject = findEcommerceObject(dataLayer);
+  var pageTitle = findPageTitleObject(dataLayer);
+
+  if (ecommerceObject) {
+    var item = ecommerceObject.ecommerce.items[0]; // Assuming you want to track the first item in the list
+
+    analytics.track('Product Viewed', {
+      product_id: item.item_id || '',
+      name: item.item_name || '',
+      category: item.item_category || '',
+      brand: item.item_brand || '',
+      variant: item.item_variant || '',
+      price: item.price || 0,
+      quantity: item.quantity || 1,
+      currency: 'USD', // Assuming USD, adjust as necessary
+      page: pageTitle
+    });
+  }
+}
+
+</script>
+
+</head>
+<body>
+    <nav>
+        <a href="/" target="">go home</a>
+    </nav>
+    <section id="project" class="project">
+        <div class="project-description">
+            <h3>Overview</h3>
+            <h1 class="project-description-intro">{{ projectDescription }}</h1>
+            <!-- This is where the main problem we were solving for goes -->
+            <i>{{ blurb }}</i>
+            <h3>THE PROBLEM</h3>
+            <p>{{ problem }}</p>
+            <h3>THE SOLUTION</h3>
+            <p>{{ solution }}</p>
+        </div>
+        <div class="project-highlights">
+            <h2>{{ businessType }} | {{ industry }}</h2>
+            <p>project length | {{ duration }}</p>
+            <hr>
+            <p class="inline">{{ tactic1 }}</p>
+            <p class="inline padding">{{ tactic2 }}</p>
+            <p class="inline padding">{{ tactic3 }}</p>
+        </div>
+    </section>
+    <section id="contact" class="contact-section">
+      <div class="footer-header">
+          <h2>Let's work together</h2>
+          <p>Drop me a line let's chat!</p>
+      </div>
+      <div class="footer-contact">
+          <a class="contact-btn" href="https://www.linkedin.com/in/lowryjordan/">
+              <button style="font-size:18px"><i class="fa fa-linkedin-square"> Connect with me</i></button>
+          </a>
+          <a class="contact-btn" href = "mailto: tatelwry@gmail.com">
+              <button style="font-size:18px"><i class="fa fa-envelope"> Email me</i></button>
+          </a>
+          <a class="contact-btn" href="tel:555-666-7777">
+              <button style="font-size:18px"><i class="fa fa-phone"> Call me</i></button>
+          </a>
+      </div>
+  </section>
+
+
+</body>
+</html>

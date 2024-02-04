@@ -1,0 +1,169 @@
+a{
+    color: white;
+    text-decoration: none;
+}
+nav {
+  text-align: center;
+}
+/* a:hover {
+  color: green;
+} */
+* {
+  padding: 0;
+  margin: 0;
+  background-color: #1A1A1A;
+}
+
+/* STYLE CTA BUTTON IN FOOTER */
+button {
+  border: none;
+}
+
+
+h1, h2, h3, h4, h5{
+    color: #FFFFFF;
+}
+
+p, i, hr {
+  color: #F0F0F0;
+}
+
+#project {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-top: 20vh;
+}
+
+hr {
+  width: 50%;
+}
+
+/* PROJECT DESCRIPTION SECTION */
+
+.project-description {
+  padding-right: 2rem;
+  width: 50%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 20rem;
+}
+
+.project-description-intro {
+  font-size: 42px;
+}
+
+.project-description h3 {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+/* PROJECT HIGHLIGHTS */
+
+.project-highlights {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.project-highlights h2 {
+  font-size: 35px;
+  padding-bottom: 1rem;
+}
+
+.project-highlights p {
+  padding-bottom: 1rem;
+}
+
+.inline {
+  display: inline-block;
+  padding-top: 1rem;
+}
+
+.inline.padding {
+  padding-left: 1rem;
+}
+
+.project-highlights p {
+  padding-bottom: 1rem;
+}
+
+/* CONTACT SECTION STYLING*/
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 30vh;
+  padding: 0 2rem;
+  margin-top: 4rem;
+}
+
+#contact h2 {
+  margin-bottom: 0.25rem;
+}
+
+.footer-contact {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.contact-btn {
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+/* Footer Styling */
+
+#footer-section{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5rem;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 750px){
+
+/* main project section */
+#project{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+.project-description {
+ padding: 2rem; 
+ width: 80%;
+}
+.project-highlights{
+  padding: 2rem; 
+  width: 80%;
+}
+.inline{
+  display: block;
+  padding-top: 1rem;
+}
+.inline.padding{
+  padding-left: 0;
+}
+  /* Footer Section */
+  #contact{
+    padding: 0;
+  }
+  .contact-btn{
+    padding: 0;
+    width: 100%;
+  }
+
+
+
+}
